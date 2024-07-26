@@ -66,6 +66,8 @@ const EmailConditions = (email) => {
 const AgeConditions = (age) => {
   if (isNaN(age)) return false;
   if (age < 0) return false;
+  if (age.length === 0) return false;
+  if (age.length >= 3) return false;
   return true;
 };
 
@@ -78,25 +80,32 @@ const PasswordConditions = (password) => {
 };
 
 const changePassword = () => {
-  let email = prompt("Enter your email:");
-  let oldPassword = prompt("Enter ur old password:");
-  let newPassword = prompt("Enter ur new password:");
-  let confirmNewPassword = prompt("Confirm ur new password:");
-
-  if (users.email === email && users.password === oldPassword) {
-    if (newPassword === confirmNewPassword) {
-      if (!PasswordConditions(newPassword)) {
-        alert("Invalid new password. Please try again.");
-        return;
-      }
-      users.password = newPassword;
-      alert("Password changed successfully!");
-    } else {
-      alert("New passwords do not match. Please try again.");
-    }
-  } else {
-    alert("Invalid email or password. Please try again.");
+  let email = prompt("Enter your existing email:");
+  if (email !== users.email) {
+    alert("Email does not match with our records. Please try again.");
+    return;
   }
+
+  let oldPassword = prompt("Enter your old password:");
+  if (oldPassword !== users.password) {
+    alert("Old password is incorrect. Please try again.");
+    return;
+  }
+
+  let newPassword = prompt("Enter your new password:");
+  if (!PasswordConditions(newPassword)) {
+    alert("Invalid new password. Please try again.");
+    return;
+  }
+
+  let confirmNewPassword = prompt("Confirm your new password:");
+  if (newPassword !== confirmNewPassword) {
+    alert("New passwords do not match. Please try again.");
+    return;
+  }
+
+  users.password = newPassword;
+  alert("Password changed successfully!");
 };
 
 while (true) {
@@ -110,7 +119,7 @@ while (true) {
       logIn();
       break;
     case "3":
-      changePassword();
+        changePassword();
       break;
     case "4":
       alert("bye bye  see u soon");
@@ -120,3 +129,4 @@ while (true) {
   }
   if (choice === "4") break;
 }
+console.log(users);
