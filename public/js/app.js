@@ -4,6 +4,7 @@ let users = {};
 const signUp = () => {
   let fullName = prompt("Enter your full name:").trim();
   fullName = fullName.charAt(0).toUpperCase() + fullName.slice(1).toLowerCase();
+  fullName= fullName.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   if (!usernameConditions(fullName)) {
     alert("Invalid full name. Please try again.");
     return;
@@ -129,4 +130,5 @@ while (true) {
   }
   if (choice === "4") break;
 }
+
 console.log(users);
