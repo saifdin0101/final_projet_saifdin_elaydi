@@ -34,7 +34,7 @@ const signUp = () => {
     return;
   }
 
-  users.accounts = { fullName, age, email, password };
+  users= { fullName, age, email, password };
   alert("Account created successfully!");
 };
 
@@ -42,7 +42,7 @@ const logIn = () => {
   let email = prompt("Enter your email:");
   let password = prompt("Enter your password:");
 
-  if (users[email] && users[email].password === password) {
+  if (users.email === email &&  users.password === password) {
     alert("Logged in successfully!");
   } else {
     alert("Invalid email or password. Please try again.");
@@ -102,7 +102,11 @@ const changePassword = () => {
     alert("Invalid email or password. Please try again.");
   }
 };
-  let choice = prompt("Choose an option:\n1. Sign up\n2. Log in\n3. Change password\n4. Exit");
+console.log(users);
+
+while (true) {
+    
+let choice = prompt("Choose an option:\n1. Sign up\n2. Log in\n3. Change password\n4. Exit");
 
   switch (choice) {
     case "1":
@@ -120,7 +124,5 @@ const changePassword = () => {
     default:
       alert(" u didnt choose any of the option so you left ");
   }
+}
 
-
-
-console.log(users);
