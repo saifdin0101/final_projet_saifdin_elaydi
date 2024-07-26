@@ -87,13 +87,13 @@ const changePassword = () => {
   let newPassword = prompt("Enter ur new password:");
   let confirmNewPassword = prompt("Confirm ur new password:");
 
-  if (users[email] && users[email].password === oldPassword) {
+  if (users.email = email && users.password === oldPassword) {
     if (newPassword === confirmNewPassword) {
       if (!PasswordConditions(newPassword)) {
         alert("Invalid new password. Please try again.");
         return;
       }
-      users[email].password = newPassword;
+      users.password = newPassword;
       alert("Password changed successfully!");
     } else {
       alert("New passwords do not match. Please try again.");
