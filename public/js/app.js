@@ -50,3 +50,40 @@ const logIn = () => {
 
 
 
+  if (users[email] && users[email].password === oldPassword) {
+    if (newPassword === confirmNewPassword) {
+      if (!PasswordConditions(newPassword)) {
+        alert("Invalid new password. Please try again.");
+        return;
+      }
+      users[email].password = newPassword;
+      alert("Password changed successfully!");
+    } else {
+      alert("New passwords do not match. Please try again.");
+    }
+  } else {
+    alert("Invalid email or password. Please try again.");
+  }
+;
+
+
+  let choice = prompt("Choose an option:\n1. Sign up\n2. Log in\n3. Change password\n4. Exit");
+
+  switch (choice) {
+    case "1":
+      signUp();
+      break;
+    case "2":
+      logIn();
+      break;
+    case "3":
+      changePassword();
+      break;
+    case "4":
+      alert("Exiting program. Goodbye!");
+      break;
+    default:
+      alert("Invalid choice. Please try again.");
+  }
+
+
