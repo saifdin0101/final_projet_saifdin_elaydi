@@ -1,10 +1,9 @@
 
 let users = {};
 
-
 const signUp = () => {
   let fullName = prompt("Enter your full name:").trim();
-        fullName = fullName.charAt(0).toUpperCase() + fullName.slice(1).toLowerCase()
+  fullName = fullName.charAt(0).toUpperCase() + fullName.slice(1).toLowerCase();
   if (!usernameConditions(fullName)) {
     alert("Invalid full name. Please try again.");
     return;
@@ -34,7 +33,7 @@ const signUp = () => {
     return;
   }
 
-  users= { fullName, age, email, password };
+  users = { fullName, age, email, password };
   alert("Account created successfully!");
 };
 
@@ -42,7 +41,7 @@ const logIn = () => {
   let email = prompt("Enter your email:");
   let password = prompt("Enter your password:");
 
-  if (users.email === email &&  users.password === password) {
+  if (users.email === email && users.password === password) {
     alert("Logged in successfully!");
   } else {
     alert("Invalid email or password. Please try again.");
@@ -50,9 +49,6 @@ const logIn = () => {
 };
 
 const usernameConditions = (name) => {
-    
-
-
   if (name.length < 5) return false;
   if (/[0-9@!#$%^&*()_+=[\]{};':"\\|,.<>?]/.test(name)) return false;
   return true;
@@ -87,7 +83,7 @@ const changePassword = () => {
   let newPassword = prompt("Enter ur new password:");
   let confirmNewPassword = prompt("Confirm ur new password:");
 
-  if (users.email = email && users.password === oldPassword) {
+  if (users.email === email && users.password === oldPassword) {
     if (newPassword === confirmNewPassword) {
       if (!PasswordConditions(newPassword)) {
         alert("Invalid new password. Please try again.");
@@ -102,11 +98,9 @@ const changePassword = () => {
     alert("Invalid email or password. Please try again.");
   }
 };
-console.log(users);
 
 while (true) {
-    
-let choice = prompt("Choose an option:\n1. Sign up\n2. Log in\n3. Change password\n4. Exit");
+  let choice = prompt("Choose an option:\n1. Sign up\n2. Log in\n3. Change password\n4. Exit");
 
   switch (choice) {
     case "1":
@@ -124,5 +118,5 @@ let choice = prompt("Choose an option:\n1. Sign up\n2. Log in\n3. Change passwor
     default:
       alert(" u didnt choose any of the option so you left ");
   }
+  if (choice === "4") break;
 }
-
