@@ -10,14 +10,14 @@ const signUp = () => {
     return;
   }
 
-  let email = prompt("Enter your email:");
+  let email = prompt("Enter your email:").trim();
   if (!EmailConditions(email)) {
     alert("Invalid email. Please try again.");
     return;
   }
 
   let age = parseInt(prompt("Enter your age:"));
-  if (!AgeConditions(age)) {
+  if (!AgeConditions(age) && age.includes(" ")) {
     alert("Invalid age. Please try again.");
     return;
   }
@@ -56,7 +56,6 @@ const usernameConditions = (name) => {
 };
 
 const EmailConditions = (email) => {
-  if (email.trim() !== email) return false;
   if (email.toUpperCase() === email) return false;
   if (email.includes(' ')) return false;
   if (email.length < 10) return false;
@@ -126,7 +125,7 @@ while (true) {
       alert("bye bye  see u soon");
       break;
     default:
-      alert(" u didnt choose any of the option so you left ");
+      alert(" u didnt choose any of the option, please choose something that make sense  ");
   }
   if (choice === "4") break;
 }
